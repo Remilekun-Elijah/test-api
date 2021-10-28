@@ -2,6 +2,7 @@
 var express = require('express');
 const user = require("./controller/user");
 const path = require('path');
+const cors = require("cors");
 
 const upload = require("./utils/multerConfig");
 
@@ -13,7 +14,7 @@ app.use(express.static(path.resolve('public')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(cors());
 app.get('/v1/', user.homepage)
 
 // updates a user 
